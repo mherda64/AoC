@@ -27,8 +27,9 @@ class Day07 : FreeSpec() {
             val cardTypes = splitInput[0].toCharArray().map(CardType::valueOf)
             val cards = splitInput[0].toCharArray()
                 .mapIndexed { index, c -> Card(CardType.valueOf(c), index) }
-            Triple(bid, cards, cardTypes.associateWith { card -> cardTypes.count { it == card } })
-        }.map { CardSet(it.first, it.second, it.third, CardSet.getSetType(it.third.values)) }
+            val cardMap = cardTypes.associateWith { card -> cardTypes.count { it == card } }
+            CardSet(bid, cards, cardMap, CardSet.getSetType(cardMap.values))
+        }
 
         val sorted = cardSets.asSequence().sorted()
         return sorted
@@ -45,8 +46,9 @@ class Day07 : FreeSpec() {
             val withoutJacks = replaceJacks(splitInput[0]).toCharArray().map(CardType::valueOf)
             val cards = splitInput[0].toCharArray()
                 .mapIndexed { index, c -> Card(CardType.valueOf(c), index) }
-            Triple(bid, cards, withoutJacks.associateWith { card -> withoutJacks.count { it == card } })
-        }.map { CardSet(it.first, it.second, it.third, CardSet.getSetType(it.third.values)) }
+            val cardMap = withoutJacks.associateWith { card -> withoutJacks.count { it == card } }
+            CardSet(bid, cards, cardMap, CardSet.getSetType(cardMap.values))
+        }
 
         val sorted = cardSets.sorted()
         return sorted
