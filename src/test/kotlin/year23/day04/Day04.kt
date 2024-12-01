@@ -1,8 +1,8 @@
-package day04
+package year23.day04
 
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import readInputAsLines
+import year23.readInputAsLines
 import kotlin.math.pow
 
 class Day04 : FreeSpec() {

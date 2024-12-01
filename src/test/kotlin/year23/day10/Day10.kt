@@ -1,8 +1,8 @@
-package day10
+package year23.day10
 
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import readInputAsLines
+import year23.readInputAsLines
 
 class Day10 : FreeSpec() {
     val testInput1 = readInputAsLines("${this::class.simpleName}_test1")
