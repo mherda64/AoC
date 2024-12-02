@@ -1,9 +1,7 @@
 package year24.day01
 
 import DayTemplate
-import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
-import year23.readInputAsLines
 import kotlin.math.abs
 
 class Day01 : DayTemplate("01") {
