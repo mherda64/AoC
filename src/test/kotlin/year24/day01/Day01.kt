@@ -4,7 +4,7 @@ import DayTemplate
 import io.kotest.matchers.shouldBe
 import kotlin.math.abs
 
-class Day01 : DayTemplate("01") {
+class Day01 : DayTemplate() {
     init {
         "Should solve the test input" {
             firstPart(testInputPart1) shouldBe 11

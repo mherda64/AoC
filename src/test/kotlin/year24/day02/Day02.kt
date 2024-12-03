@@ -5,7 +5,7 @@ import dropIndex
 import io.kotest.matchers.shouldBe
 import kotlin.math.abs
 
-class Day02 : DayTemplate("02") {
+class Day02 : DayTemplate() {
     init {
         "Should solve the test input" {
             firstPart(testInputPart1) shouldBe 2
@@ -20,7 +20,7 @@ class Day02 : DayTemplate("02") {
 
     private fun secondPart(input: List<String>) =
         parseInput(input).map { row ->
-            isSafe(row) || isSafeWithoutSingleLevel(row)
+            isSafeWithoutSingleLevel(row)
         }.count { it }
 
     private fun isSafeWithoutSingleLevel(row: List<Int>): Boolean {
