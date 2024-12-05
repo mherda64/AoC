@@ -7,41 +7,34 @@ class Day05 : DayTemplate() {
 
     init {
         "Should solve the test input" {
-            firstPart(testInputPart1) shouldBe 143
-            secondPart(testInputPart2) shouldBe 123
+            val (firstPart, secondPart) = solution(testInputPart1)
+            firstPart shouldBe 143
+            secondPart shouldBe 123
         }
 
         "Should solve the proper input" {
-            println(firstPart(input))
-            println(secondPart(input))
+            val (firstPart, secondPart) = solution(testInputPart1)
+            println(firstPart)
+            println(secondPart)
         }
     }
 
-    private fun firstPart(input: List<String>): Int {
+    private fun solution(input: List<String>): Pair<Int, Int> {
         val (rules, updates) = parseInput(input)
-        var sum = 0
+        var firstPartSum = 0
+        var secondPartSum = 0
         for (update in updates) {
             val reordered = reorderInvalid(rules, update)
             if (reordered == update) {
-                sum += update[update.size / 2]
+                firstPartSum += update[update.size / 2]
+            } else {
+                secondPartSum += reordered[reordered.size / 2]
             }
         }
 
-        return sum
+        return Pair(firstPartSum, secondPartSum)
     }
 
-    private fun secondPart(input: List<String>): Int {
-        val (rules, updates) = parseInput(input)
-        var sum = 0
-        for (update in updates) {
-            val reordered = reorderInvalid(rules, update)
-            if (reordered != update) {
-                sum += reordered[reordered.size / 2]
-            }
-        }
-
-        return sum
-    }
 
     private fun reorderInvalid(rules: List<Pair<Int, Int>>, update: List<Int>): List<Int> {
         val filteredRules = rules.filter { update.contains(it.first) && update.contains(it.second) }
