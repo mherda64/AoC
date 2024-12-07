@@ -7,6 +7,7 @@ abstract class DayTemplate(
     private val packageName = this::class.simpleName!!.lowercase()
     protected val testInputPart1 = asLines("test_part1")
     protected val testInputPart2 = asLines("test_part${if (secondTestPartTheSame) "1" else "2"}")
+    protected val testInput = testInputPart1
     protected val input = asLines("input")
 
     private fun readInput(name: String) = File("src/test/kotlin/year24/$packageName", "$name.txt")
