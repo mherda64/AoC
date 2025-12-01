@@ -2,7 +2,8 @@ import io.kotest.core.spec.style.FreeSpec
 import java.io.File
 
 abstract class DayTemplate(
-    secondTestPartTheSame: Boolean = true
+    secondTestPartTheSame: Boolean = true,
+    private val year: String = "year24"
 ) : FreeSpec() {
     private val packageName = this::class.simpleName!!.lowercase()
     protected val testInputPart1 = asLines("test_part1")
@@ -10,6 +11,6 @@ abstract class DayTemplate(
     protected val testInput = testInputPart1
     protected val input = asLines("input")
 
-    private fun readInput(name: String) = File("src/test/kotlin/year24/$packageName", "$name.txt")
+    private fun readInput(name: String) = File("src/test/kotlin/$year/$packageName", "$name.txt")
     private fun asLines(name: String) = readInput(name).readLines()
 }
