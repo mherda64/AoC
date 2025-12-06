@@ -9,3 +9,7 @@ class Map<T>(
     fun get(x: Int, y: Int): T? =
         grid.getOrNull(y)?.getOrNull(x)
 }
+
+fun <T>List<List<T>>.transpose(): List<List<T>> {
+    return (this[0].indices).map { i -> (this.indices).map { j -> this[j][i] } }
+}
